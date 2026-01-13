@@ -2,12 +2,19 @@
     @csrf
     <div class="mb-3">
         <label for="title" class="form-label">Titolo</label>
-        <input type="text" name="title" class="form-control" id="title" aria-describedby="titlelHelp">
+        <input type="text" name="title" class="form-control" id="title" aria-describedby="titlelHelp" value="{{old('title')}}">
+        @error('title')
+        <p class="text-danger">{{ $message }}</p>
+        @enderror
+        
     </div>
     
     <div class="mb-3">
         <label for="content" class="form-label">Contenuto</label>
-        <textarea name="description" id="content" class="form-control" cols="30" rows="10"></textarea>
+        <textarea name="description" id="content" class="form-control" cols="30" rows="10">{{old('description')}}</textarea>
+        @error('description')
+        <p class="text-danger">{{ $message }}</p>
+        @enderror
     </div>
     
     {{-- input per img --}}

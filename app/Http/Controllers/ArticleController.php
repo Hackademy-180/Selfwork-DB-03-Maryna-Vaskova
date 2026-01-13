@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Article;
 use Illuminate\Http\Request;
+use App\Http\Requests\ArticleRequest;
+
 
 class ArticleController extends Controller
 {
@@ -16,7 +18,7 @@ class ArticleController extends Controller
         return view('articles.create');
     }
 
-    public function article_submit(Request $req){
+    public function article_submit(ArticleRequest $req){
 
 
         Article::create([
