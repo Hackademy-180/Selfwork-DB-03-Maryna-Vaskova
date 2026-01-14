@@ -21,7 +21,34 @@
         <li class="nav-item">
           <a class="nav-link" href="{{route('articles_create')}}">Crea articolo</a>
         </li>
-      </ul>
-    </div>
-  </div>
-</nav>
+        @auth
+        {{-- se l'utente è autenticato --}}
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Benvenut* {{Auth::user()->name}}
+          </a>
+          <ul class="dropdown-menu">
+            <li>
+              <form action="{{route('logout')}}" method="POST">
+                @csrf
+                <button class="dropdown-item" type="submit">Logout</button>
+                <p>Hai gia un account? Accedi da questo link </p>
+                
+              </form>
+            </li>
+            @else
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Benvenuto utente!
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="{{route('register')}}">Registrati</a></li>
+                <li><a class="dropdown-item" href="{{route('login')}}">Login</a></li>
+              </ul>
+            </li>
+            @endauth
+            
+          </ul>
+        </div>
+      </div>
+    </nav>

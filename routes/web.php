@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PublicController;
 use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\MagazineController;
 
 Route::get('/', [PublicController::class, 'home'])->name('homepage');
 // Prodotti
@@ -18,3 +19,9 @@ Route::get('/articles/create', [ArticleController::class, 'articles_create'])->n
 
 
 Route::post('/article/submit', [ArticleController::class, 'article_submit'])->name('article_submit');
+
+// Magazine
+Route::get('/magazines/index', [MagazineController::class, 'index'])->name('magazines_index');
+
+Route::get('/magazines/create', [MagazineController::class, 'create'])->name('magazines_create');
+Route::post('/magazine/submit', [MagazineController::class, 'store'])->name('magazine_submit');
