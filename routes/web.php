@@ -24,4 +24,8 @@ Route::post('/article/submit', [ArticleController::class, 'article_submit'])->na
 Route::get('/magazines/index', [MagazineController::class, 'index'])->name('magazines_index');
 
 Route::get('/magazines/create', [MagazineController::class, 'create'])->name('magazines_create');
-Route::post('/magazine/submit', [MagazineController::class, 'store'])->name('magazine_submit');
+Route::post('/magazine/store', [MagazineController::class, 'store'])->name('magazine_store');
+Route::get('/magazine/detail/{magazine}', [MagazineController::class, 'show'])->name('magazine_show');
+Route::get('/magazine/edit/{magazine}', [MagazineController::class, 'edit'])->name('magazine_edit');
+Route::put('/magazine/update/{magazine}', [MagazineController::class, 'update'])->name('magazine_update');
+Route::delete('/magazine/destroy/{magazine}', [MagazineController::class, 'destroy'])->name('magazine_destroy');

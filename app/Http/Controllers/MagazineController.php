@@ -30,9 +30,9 @@ class MagazineController extends Controller
     public function store(Request $request)
     {
         Magazine::create([
-            'name' => $request->name,
-            'title' => $request->title,
-            'content' => $request->content
+            "name" => $request->name,
+            "title" => $request->title,
+            "content" => $request->content
         ]);
 
         return redirect(route('magazines_index'));
@@ -43,7 +43,8 @@ class MagazineController extends Controller
      */
     public function show(Magazine $magazine)
     {
-        //
+        //Pagina di dettaglio
+        return view('magazines.detail', compact('magazine'));
     }
 
     /**
@@ -51,7 +52,8 @@ class MagazineController extends Controller
      */
     public function edit(Magazine $magazine)
     {
-        //
+        //Accedere alla pagina che contiene il form per l'update
+        return view('magazines.edit', compact('magazine'));
     }
 
     /**
@@ -59,7 +61,14 @@ class MagazineController extends Controller
      */
     public function update(Request $request, Magazine $magazine)
     {
-        //
+        //Modificare i dati del record, NON dell'intera tabella. Quindi NON utilizza il Modello bensì utilizza l'oggetto istanziato con la classe del Modello.
+        $magazine->update([
+            "name" => $request->name,
+            "title" => $request->title,
+            "content" => $request->content
+        ]);
+
+        return redirect(route('magazine_show', compact('magazine')));
     }
 
     /**
@@ -67,6 +76,8 @@ class MagazineController extends Controller
      */
     public function destroy(Magazine $magazine)
     {
-        //
+        //Cancellare il record
+        $magazine->delete();
+        return redirect(route('magazines_index'));
     }
 }

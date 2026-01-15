@@ -5,6 +5,7 @@
       <article class="col-12 col-md-8">
         <h1>Pagina di registrazione</h1>
         <form method="POST" action="{{route('login')}}">
+            @csrf
           <div class="mb-3">
             <label for="email" class="form-label">Email</label>
             <input type="email" class="form-control" id="email" name="email">
