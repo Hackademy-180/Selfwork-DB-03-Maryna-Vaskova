@@ -31,7 +31,15 @@
         <li class="nav-item">
           <a class="nav-link" href="{{route('magazines_create')}}">Crea Giornale</a>
         </li>
-        
+        <li class="nav-item">
+          <a class="nav-link" href="{{route('posts_index')}}">Tutti i post</a>
+        </li>
+        @auth
+        <li class="nav-item">
+          <a class="nav-link" href="{{route('posts_create')}}">Crea Post</a>
+        </li>
+        @endauth
+
         @auth
         {{-- se l'utente è autenticato --}}
         <li class="nav-item dropdown">
@@ -49,6 +57,7 @@
           </ul>
         </li>
         @else
+        {{-- se l'utente non è autenticato --}}
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Benvenuto utente

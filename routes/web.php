@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PublicController;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\MagazineController;
+use App\Http\Controllers\PostController;
 
 Route::get('/', [PublicController::class, 'home'])->name('homepage');
 // Prodotti
@@ -29,3 +30,10 @@ Route::get('/magazine/detail/{magazine}', [MagazineController::class, 'show'])->
 Route::get('/magazine/edit/{magazine}', [MagazineController::class, 'edit'])->name('magazine_edit');
 Route::put('/magazine/update/{magazine}', [MagazineController::class, 'update'])->name('magazine_update');
 Route::delete('/magazine/destroy/{magazine}', [MagazineController::class, 'destroy'])->name('magazine_destroy');
+
+// Post
+Route::get('/posts/index', [PostController::class, 'index'])->name('posts_index');
+Route::get('posts/create', [PostController::class, 'create'])->name('posts_create');
+Route::post('/post/store', [PostController::class, 'store'])->name('post_store');
+Route::get('/post/detail/{post}', [PostController::class, 'show'])->name('post_show');
+Route::get('/post/edit/{post}', [PostController::class, 'edit'])->name('post_edit');
